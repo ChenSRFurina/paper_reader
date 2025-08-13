@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>论文阅读报告</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #007acc;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            color: #007acc;
+            margin: 0;
+            font-size: 2.5em;
+        }
+        .meta-info {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border-left: 4px solid #007acc;
+        }
+        .meta-info p {
+            margin: 5px 0;
+        }
+        .summary-section {
+            margin-bottom: 30px;
+        }
+        .summary-section h2 {
+            color: #007acc;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+        .summary-content {
+            background: #fafafa;
+            padding: 20px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            line-height: 1.8;
+        }
+        .images-section {
+            margin-top: 30px;
+        }
+        .images-section h2 {
+            color: #007acc;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .image-item {
+            text-align: center;
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+        .image-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .image-caption {
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: #666;
+        }
+        .original-text {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 5px;
+            max-height: 400px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+        }
+        .original-text h3 {
+            color: #007acc;
+            margin-top: 0;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            color: #666;
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            .image-gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📚 论文阅读报告</h1>
+            <p>AI智能论文分析工具生成</p>
+        </div>
+        
+        <div class="meta-info">
+            <p><strong>📄 论文链接：</strong><a href="https://arxiv.org/html/2506.07964v1" target="_blank">https://arxiv.org/html/2506.07964v1</a></p>
+            <p><strong>📅 生成时间：</strong>2025-08-13 13:18:54</p>
+            <p><strong>🖼️ PNG图片数量：</strong>15张</p>
+        </div>
+        
+        <div class="summary-section">
+            <h2>📝 论文摘要</h2>
+            <div class="summary-content">## 1. 引言（Introduction）
+
+引言部分指出，幻灯片制作在学术与专业交流中至关重要，但手动设计耗时且依赖专业知识。尽管模板可提供一定便利，但其固定布局限制了灵活性。近年来，大型语言模型（LLMs）在自动幻灯片生成方面取得进展，例如AutoPresent通过将自然语言指令转化为Python代码，调用SLIDESLIB API生成幻灯片。然而，该方法在视觉结构和布局细节的表达上仍存在不足，无法准确还原复杂设计意图。作者提出Slide2Code任务，旨在基于参考图像生成可编辑幻灯片，并构建SlideCoder框架，结合布局感知与检索增强生成技术，提升生成质量。
+
+## 2. 相关工作（Related Work）
+
+相关工作分为两个子部分：多模态LLMs用于代码生成（Multimodal LLMs for Code Generation）和幻灯片生成与理解（Slide Generation and Understanding）。前者讨论了多模态模型在图像到代码任务中的应用，如Flamingo、GIT等；后者回顾了幻灯片生成领域的研究进展，包括AutoPresent和SLIDESBENCH数据集。文献指出，现有方法多依赖自然语言输入，缺乏对视觉布局的结构化建模，导致生成结果与原始设计存在偏差。
+
+## 3. Slide2Code 基准（Slide2Code Benchmark）
+
+本节介绍Slide2Code基准的构建，包括任务定义、幻灯片复杂度度量（Slide Complexity Metric）和数据收集。Slide2Code是首个基于图像生成可编辑幻灯片的评估基准，包含不同复杂度级别的样本。复杂度度量综合考虑布局元素数量、颜色多样性、结构层次等因素，用于评估模型在不同设计难度下的表现。数据集包含真实幻灯片图像及其对应代码，用于训练与测试。
+
+## 4. 方法（Methodology）
+
+方法部分提出SlideCoder框架，包含颜色梯度分割（Color Gradient-based Segmentation）、分层检索增强生成模块（Hierarchical Retrieval-Augmented Generation Module）、布局感知提示（Layout-aware Prompt）和SlideMaster模型。颜色梯度算法用于识别幻灯片中的结构区域；分层RAG模块通过多阶段生成策略提升代码准确性；布局感知提示增强模型对视觉结构的理解；SlideMaster是一个基于7B参数的开源模型，经过逆向工程数据微调优化。
+
+## 5. 实验与结果（Experiments and Results）
+
+实验部分包括实验设置、定量结果分析、逆向工具对比、复杂度分析、消融研究与案例分析。结果表明，SlideCoder在布局保真度（layout fidelity）、执行准确率（execution accuracy）和视觉一致性（visual consistency）三项指标上显著优于现有方法，最高提升达40.5分。通过与AutoPresent、MLLM等基线模型的对比验证了方法有效性。消融实验显示，各模块对整体性能均有贡献，尤其分层RAG模块和布局感知提示对复杂幻灯片效果提升明显。
+
+## 6. 结论（Conclusion）
+
+结论部分总结SlideCoder的主要贡献：首次提出图像到可编辑幻灯片生成任务Slide2Code，构建首个包含复杂度分级样本的基准；提出基于颜色梯度分割与分层RAG的布局感知生成框架；发布开源模型SlideMaster，推动幻灯片自动生成研究。未来工作包括扩展支持更多设计格式、提升对非标准布局的适应能力。
+
+### 核心贡献：
+- 提出Slide2Code任务与基准，填补图像到可编辑幻灯片生成研究空白
+- 设计SlideCoder框架，结合颜色梯度分割与分层RAG提升生成质量
+- 发布开源模型SlideMaster，支持高质量幻灯片代码生成
+
+来源：SlideCoder: Layout-aware RAG-enhanced Hierarchical Slide Generation from Design</div>
+        </div>
+        
+        <div class="images-section">
+<h2>📷 论文PNG图片</h2>
+<div class="image-gallery">
+
+            <div class="image-item">
+                <img src="https://arxiv.org/html/2506.07964v1/extracted/6526017/figure/ppt.png" alt="ppt" onerror="this.style.display='none'; this.nextElementSibling.innerHTML='图片加载失败'">
+                <p class="image-caption">ppt (PNG)</p>
+            </div>
+            <div class="image-item">
+                <img src="https://arxiv.org/html/2506.07964v1/x1.png" alt="Figure 1" onerror="this.style.display='none'; this.nextElementSibling.innerHTML='图片加载失败'">
+                <p class="image-caption">Figure 1 (PNG)</p>
+            </div>
+            <div class="image-item">
+                <img src="https://arxiv.org/html/2506.07964v1/x2.png" alt="Figure 2" onerror="this.style.display='none'; this.nextElementSibling.innerHTML='图片加载失败'">
+                <p class="image-caption">Figure 2 (PNG)</p>
+            </div>
+            <div class="image-item">
+                <img src="https://arxiv.org/html/2506.07964v1/x3.png" alt="Figure 3" onerror="this.style.display='none'; this.nextElementSibling.innerHTML='图片加载失败'">
+                <p class="image-caption">Figure 3 (PNG)</p>
+            </div>
+            <div class="image-item">
+                <img src="https://arxiv.org/html/2506.07964v1/extracted/6526017/figure/colorv2/fig9_original.png" alt="fig9_original" onerror="this.style.display='none'; this.nextElementSibling.innerHTML='图片加载失败'">
+                <p class="image-caption">fig9_original (PNG)</p>
+            </div>
+            <div class="image-item">
+                <img src="https://arxiv.org/html/2506.07964v1/extracted/6526017/figure/colorv2/fig9_complexity.png" alt="fig9_complexity" onerror="this.style.display='none'; this.nextElementSibling.innerHTML='图片加载失败'">
+                <p class="image-caption">fig9_complexity (PNG)</p>
+            </div>
+            <div class="image-item">
+                <img src="https://arxiv.org/html/2506.07964v1/extracted/6526017/figure/colorv2/fig9_fld_1.png" alt="fig9_fld_1" onerror="this.style.display='none'; this.nextElementSibling.innerHTML='图片加载失败'">
+                <p class="image-caption">fig9_fld_1 (PNG)</p>
+            </div>
+            <div class="image-item">
+                <img src="https://arxiv.org/html/2506.07964v1/extracted/6526017/figure/colorv2/fig9_annotated.png" alt="fig9_annotated" onerror="this.style.display='none'; this.nextElementSibling.innerHTML='图片加载失败'">
+                <p class="image-caption">fig9_annotated (PNG)</p>
+            </div>
+            <div class="image-item">
+                <img src="https://arxiv.org/html/2506.07964v1/x4.png" alt="Figure 4" onerror="this.style.display='none'; this.nextElementSibling.innerHTML='图片加载失败'">
+                <p class="image-caption">Figure 4 (PNG)</p>
+            </div>
+            <div class="image-item">
+                <img src="https://arxiv.org/html/2506.07964v1/x5.png" alt="Figure 5" onerror="this.style.display='none'; this.nextElementSibling.innerHTML='图片加载失败'">
+                <p class="image-caption">Figure 5 (PNG)</p>
+            </div>
+            <div class="image-item">
+                <img src="https://arxiv.org/html/2506.07964v1/extracted/6526017/figure/prompt_1.png" alt="prompt_1" onerror="this.style.display='none'; this.nextElementSibling.innerHTML='图片加载失败'">
+                <p class="image-caption">prompt_1 (PNG)</p>
+            </div>
+            <div class="image-item">
+                <img src="https://arxiv.org/html/2506.07964v1/x6.png" alt="Figure 6" onerror="this.style.display='none'; this.nextElementSibling.innerHTML='图片加载失败'">
+                <p class="image-caption">Figure 6 (PNG)</p>
+            </div>
+            <div class="image-item">
+                <img src="https://arxiv.org/html/2506.07964v1/x7.png" alt="Figure 7" onerror="this.style.display='none'; this.nextElementSibling.innerHTML='图片加载失败'">
+                <p class="image-caption">Figure 7 (PNG)</p>
+            </div>
+            <div class="image-item">
+                <img src="https://arxiv.org/html/2506.07964v1/x8.png" alt="Figure 8" onerror="this.style.display='none'; this.nextElementSibling.innerHTML='图片加载失败'">
+                <p class="image-caption">Figure 8 (PNG)</p>
+            </div>
+            <div class="image-item">
+                <img src="https://arxiv.org/html/2506.07964v1/x9.png" alt="Figure 9" onerror="this.style.display='none'; this.nextElementSibling.innerHTML='图片加载失败'">
+                <p class="image-caption">Figure 9 (PNG)</p>
+            </div></div>
+</div>
+
+        
+        <div class="original-text">
+            <h3>📄 原始文本（前1000字符）</h3>
+            <p>SlideCoder: Layout-aware RAG-enhanced Hierarchical Slide Generation from Design 1 Introduction 2 Related Work 2.1 Multimodal Large Language Models for Code Generation 2.2 Slide Generation and Understanding 3 Slide2Code Benchmark 3.1 Task Description 3.2 Slide Complexity Metric 3.3 Data Collection 4 Methodology 4.1 Color Gradient-based Segmentation 4.2 Hierarchical Retrieval-Augmented Code Generation Module 4.2.1 Generation Process 4.2.2 Hierarchical Retrieval-Augmented Generation 4.3 Layout-aware Prompt 4.4 SlideMaster 5 Experiments and Results 5.1 Experimental Setup 5.2 Quantitative Results and Analysis 5.3 Reverse Tool Analysis 5.4 Slide Complexity Metric Analysis 5.5 Ablation Study 5.6 Case Study 6 Conclusion A Detail ablation analysis A.1 Details of Ablation Settings A.2 Detailed Analysis of Ablation Results B Detailed comparisons of Reverse Tool C LoRA fine-tuning parameters D Evaluation Dimensions and Scoring Criteria E Prompt Templates F Details of the Knowledge Base Constructio...</p>
+        </div>
+        
+        <div class="footer">
+            <p>由论文阅读工具生成 | 基于Qwen AI技术</p>
+        </div>
+    </div>
+</body>
+</html>

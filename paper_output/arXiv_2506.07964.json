@@ -1,0 +1,23 @@
+{
+  "url": "https://arxiv.org/html/2506.07964v1",
+  "summary": "## 1. 引言（Introduction）\n\n引言部分指出，幻灯片制作在学术与专业交流中至关重要，但手动设计耗时且依赖专业知识。尽管模板可提供一定便利，但其固定布局限制了灵活性。近年来，大型语言模型（LLMs）在自动幻灯片生成方面取得进展，例如AutoPresent通过将自然语言指令转化为Python代码，调用SLIDESLIB API生成幻灯片。然而，该方法在视觉结构和布局细节的表达上仍存在不足，无法准确还原复杂设计意图。作者提出Slide2Code任务，旨在基于参考图像生成可编辑幻灯片，并构建SlideCoder框架，结合布局感知与检索增强生成技术，提升生成质量。\n\n## 2. 相关工作（Related Work）\n\n相关工作分为两个子部分：多模态LLMs用于代码生成（Multimodal LLMs for Code Generation）和幻灯片生成与理解（Slide Generation and Understanding）。前者讨论了多模态模型在图像到代码任务中的应用，如Flamingo、GIT等；后者回顾了幻灯片生成领域的研究进展，包括AutoPresent和SLIDESBENCH数据集。文献指出，现有方法多依赖自然语言输入，缺乏对视觉布局的结构化建模，导致生成结果与原始设计存在偏差。\n\n## 3. Slide2Code 基准（Slide2Code Benchmark）\n\n本节介绍Slide2Code基准的构建，包括任务定义、幻灯片复杂度度量（Slide Complexity Metric）和数据收集。Slide2Code是首个基于图像生成可编辑幻灯片的评估基准，包含不同复杂度级别的样本。复杂度度量综合考虑布局元素数量、颜色多样性、结构层次等因素，用于评估模型在不同设计难度下的表现。数据集包含真实幻灯片图像及其对应代码，用于训练与测试。\n\n## 4. 方法（Methodology）\n\n方法部分提出SlideCoder框架，包含颜色梯度分割（Color Gradient-based Segmentation）、分层检索增强生成模块（Hierarchical Retrieval-Augmented Generation Module）、布局感知提示（Layout-aware Prompt）和SlideMaster模型。颜色梯度算法用于识别幻灯片中的结构区域；分层RAG模块通过多阶段生成策略提升代码准确性；布局感知提示增强模型对视觉结构的理解；SlideMaster是一个基于7B参数的开源模型，经过逆向工程数据微调优化。\n\n## 5. 实验与结果（Experiments and Results）\n\n实验部分包括实验设置、定量结果分析、逆向工具对比、复杂度分析、消融研究与案例分析。结果表明，SlideCoder在布局保真度（layout fidelity）、执行准确率（execution accuracy）和视觉一致性（visual consistency）三项指标上显著优于现有方法，最高提升达40.5分。通过与AutoPresent、MLLM等基线模型的对比验证了方法有效性。消融实验显示，各模块对整体性能均有贡献，尤其分层RAG模块和布局感知提示对复杂幻灯片效果提升明显。\n\n## 6. 结论（Conclusion）\n\n结论部分总结SlideCoder的主要贡献：首次提出图像到可编辑幻灯片生成任务Slide2Code，构建首个包含复杂度分级样本的基准；提出基于颜色梯度分割与分层RAG的布局感知生成框架；发布开源模型SlideMaster，推动幻灯片自动生成研究。未来工作包括扩展支持更多设计格式、提升对非标准布局的适应能力。\n\n### 核心贡献：\n- 提出Slide2Code任务与基准，填补图像到可编辑幻灯片生成研究空白\n- 设计SlideCoder框架，结合颜色梯度分割与分层RAG提升生成质量\n- 发布开源模型SlideMaster，支持高质量幻灯片代码生成\n\n来源：SlideCoder: Layout-aware RAG-enhanced Hierarchical Slide Generation from Design",
+  "png_image_count": 15,
+  "png_images": [
+    "https://arxiv.org/html/2506.07964v1/extracted/6526017/figure/ppt.png",
+    "https://arxiv.org/html/2506.07964v1/x1.png",
+    "https://arxiv.org/html/2506.07964v1/x2.png",
+    "https://arxiv.org/html/2506.07964v1/x3.png",
+    "https://arxiv.org/html/2506.07964v1/extracted/6526017/figure/colorv2/fig9_original.png",
+    "https://arxiv.org/html/2506.07964v1/extracted/6526017/figure/colorv2/fig9_complexity.png",
+    "https://arxiv.org/html/2506.07964v1/extracted/6526017/figure/colorv2/fig9_fld_1.png",
+    "https://arxiv.org/html/2506.07964v1/extracted/6526017/figure/colorv2/fig9_annotated.png",
+    "https://arxiv.org/html/2506.07964v1/x4.png",
+    "https://arxiv.org/html/2506.07964v1/x5.png",
+    "https://arxiv.org/html/2506.07964v1/extracted/6526017/figure/prompt_1.png",
+    "https://arxiv.org/html/2506.07964v1/x6.png",
+    "https://arxiv.org/html/2506.07964v1/x7.png",
+    "https://arxiv.org/html/2506.07964v1/x8.png",
+    "https://arxiv.org/html/2506.07964v1/x9.png"
+  ],
+  "timestamp": "2025-08-13 13:18:54.478602"
+}
